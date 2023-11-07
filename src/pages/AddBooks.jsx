@@ -1,10 +1,15 @@
 import {useState, useEffect} from "react"
 import {importBooks} from '../apis'
 import List from "../components/List"
+import {addBooks} from "../apis"
+import Flash from "../components/Flash"
 
 const AddBooks = () => {
     const [formData, setFormData] = useState({author: '', title: '', quantity: 0})
     const [books, setBooks] = useState([])
+    const [selectedBooks, setselectedBooks] = useState([])
+    const [flashMessage, setFlashMessage] = useState("")
+    const [flashVisibility, setFlashVisibility] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -21,10 +26,33 @@ const AddBooks = () => {
         console.log(books)
     }, [books])
 
+    const selectButton = (record) => {
+        const handleAddition = (record) => {
+            if (!selectedBooks.find(item => item.id === record.id)) {
+                setselectedBooks(prevselectedBooks => [...prevselectedBooks, record])
+            }
+        }
+        return (
+            <button onClick={() => handleAddition(record)} className={`record_${record.id}`}>Select</button>
+        )
+    }
+
+    const handleSubmission = async () => {
+        const confirmation = await addBooks(selectedBooks)
+        setFlashMessage(confirmation)
+        setFlashVisibility(true)
+    }
+
     return (
         <div>
             <h1>Add Books</h1>
+            {
+                flashVisibility?
+                <Flash message={flashMessage}/>:
+                null
+            }
             <div>
+                <button onClick={handleSubmission}>Add selected records</button>
                 <form onSubmit={handleSubmit}>
                     <label name='author'>Author</label>
                     <input type="text" defaultValue={formData.author} onChange={handleChange} name='author'/>
@@ -35,7 +63,7 @@ const AddBooks = () => {
                     <button type='submit'>Submit</button>
                 </form>
             </div>
-            <List records={books}/>
+            <List records={books} actionButton={selectButton}/>
         </div>
     )
 }

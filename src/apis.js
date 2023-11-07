@@ -19,3 +19,14 @@ export const importBooks = async (fields) => {
   const books = parsedResponse.message;
   return books;
 };
+
+export const addBooks = async (books) => {
+  const response = await fetch(BASE_URL + "/books", {
+    body: JSON.stringify({ books }),
+    method: "POST",
+    "Content-Type": "application/json",
+  });
+  const parsedResponse = await response.json();
+  const confirmation = parsedResponse.message;
+  return confirmation;
+};

@@ -1,9 +1,8 @@
 import Empty from "./Empty"
 import { useEffect, useState } from "react"
 
-function List ({records}) {
+function List ({records, actionButton}) {
 
-    const [selectedRecords, setSelectedRecords] = useState([])
 
     useEffect(() => {
         console.log(records)
@@ -13,17 +12,9 @@ function List ({records}) {
         return <Empty />
     }
 
-    const handleAddition = (record) => {
-        setSelectedRecords(prevSelectedRecords => [...prevSelectedRecords, record])
-    }
-
-    const handleSubmission = () => {
-
-    }
 
     return (
         <div>
-            <button onClick={handleSubmission}>Add selected records</button>
             <table>
                 <thead>
                     <tr>
@@ -46,7 +37,9 @@ function List ({records}) {
                                     )
                                 }
                                 <td>
-                                    <button onClick={() => handleAddition(record)} className={`record_${record.id}`}>Select</button>
+                                    {
+                                        actionButton(record)
+                                    }
                                 </td>
                             </tr>
                         )
