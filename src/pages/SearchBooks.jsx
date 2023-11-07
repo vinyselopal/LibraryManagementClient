@@ -1,6 +1,6 @@
 import {useState} from "react"
 import {getBooks} from '../apis'
-import List from "./components/List"
+import List from "../components/List"
 
 const SearchBooks = () => {
     const [formData, setFormData] = useState({author: '', title: ''})

@@ -4,6 +4,18 @@ export const getBooks = async (fields) => {
   const response = await fetch(
     BASE_URL + `/books?author=${fields.author}&title=${fields.title}`
   );
-  const books = await response.json();
+  const parsedResponse = await response.json();
+  const books = parsedResponse.message;
+  return books;
+};
+
+export const importBooks = async (fields) => {
+  const response = await fetch(BASE_URL + "/books/import_books", {
+    body: JSON.stringify(fields),
+    method: "POST",
+    "Content-Type": "application/json",
+  });
+  const parsedResponse = await response.json();
+  const books = parsedResponse.message;
   return books;
 };

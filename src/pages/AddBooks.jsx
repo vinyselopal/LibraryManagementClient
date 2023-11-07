@@ -1,6 +1,6 @@
-import {useState} from "react"
-import {getBooks} from '../apis'
-import List from "./components/List"
+import {useState, useEffect} from "react"
+import {importBooks} from '../apis'
+import List from "../components/List"
 
 const AddBooks = () => {
     const [formData, setFormData] = useState({author: '', title: '', quantity: 0})
@@ -8,7 +8,7 @@ const AddBooks = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await getBooks(formData)
+        const response = await importBooks(formData)
         setBooks(response)
     }
 
@@ -16,6 +16,10 @@ const AddBooks = () => {
         const {name, value} = e.target
         setFormData((preFormData) => ({...preFormData, [name]: value}))
     }
+
+    useEffect(() => {
+        console.log(books)
+    }, [books])
 
     return (
         <div>

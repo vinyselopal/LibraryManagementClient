@@ -7,39 +7,6 @@ import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     children: [
-//       {
-//         path: "/search_books",
-//         element: <SearchBooks />,
-//       },
-//       {
-//         path: "/add_books",
-//         element: <AddBooks />,
-//       },
-//       {
-//         path: "/search_members",
-//         element: <SearchMembers />,
-//       },
-//       {
-//         path: "/add_member",
-//         element: <AddMember />,
-//       },
-//       {
-//         path: "/issue_book",
-//         element: <IssueBook />,
-//       },
-//       {
-//         path: "/borrow_history",
-//         element: <BorrowHistory />,
-//       },
-//     ],
-//   },
-// ]);
-
 root.render(
   <React.StrictMode>
     <App />
