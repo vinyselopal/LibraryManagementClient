@@ -52,3 +52,37 @@ export const getMembers = async (fields) => {
   const members = parsedResponse.message;
   return members;
 };
+
+export const getTransactions = async (fields) => {
+  const response = await fetch(
+    BASE_URL +
+      `/transactions?book_author=${fields.book_author}&book_title=${fields.book_title}&issue_date=${fields.issue_date}&return_date=${fields.return_date}&payment_done=${fields.payment_done}&member_email=${fields.member_email}`
+  );
+  const parsedResponse = await response.json();
+  const transactions = parsedResponse.message;
+  return transactions;
+};
+
+export const returnBook = async (record_id) => {
+  const response = await fetch(
+    BASE_URL + `/transactions/${record_id}/return_book`,
+    {
+      method: "PUT",
+    }
+  );
+  const parsedResponse = await response.json();
+  const confirmation = parsedResponse.message;
+  return confirmation;
+};
+
+export const chargeBookFee = async (record_id) => {
+  const response = await fetch(
+    BASE_URL + `/transactions/${record_id}/charge_fee`,
+    {
+      method: "PUT",
+    }
+  );
+  const parsedResponse = await response.json();
+  const confirmation = parsedResponse.message;
+  return confirmation;
+};

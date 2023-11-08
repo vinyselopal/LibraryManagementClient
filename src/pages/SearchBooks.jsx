@@ -18,7 +18,7 @@ const SearchBooks = () => {
     }
 
     return (
-        <div className='books_form'>
+        <div>
             <h1>Search Books</h1>
             <div>
                 <form onSubmit={handleSubmit}>

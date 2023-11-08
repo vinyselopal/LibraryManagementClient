@@ -59,11 +59,11 @@ const AddBooks = () => {
                     <label name='title'>Title</label>
                     <input type="text" defaultValue={formData.title} onChange={handleChange} name='title'/>
                     <label name='quantity'>Quantity</label>
-                    <input type="number" defaultValue={formData.quantity} onChange={handleChange} name='quantity'/>
+                    <input type="number" min="1" defaultValue={formData.quantity} onChange={handleChange} name='quantity'/>
                     <button type='submit'>Import</button>
                 </form>
             </div>
-            <List records={books} actionButton={selectButton}/>
+            <List records={books} actionButtons={selectButton}/>
         </div>
     )
 }

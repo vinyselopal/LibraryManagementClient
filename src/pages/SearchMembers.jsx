@@ -21,7 +21,7 @@ const SearchMembers = () => {
     }
 
     return (
-        <div className='books_form'>
+        <div>
             <h1>Search Members</h1>
             <div>
                 <select name="filter" onChange={handleChange}>

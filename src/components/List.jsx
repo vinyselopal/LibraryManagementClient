@@ -1,11 +1,11 @@
 import Empty from "./Empty"
 import { useEffect, useState } from "react"
 
-function List ({records, actionButton}) {
+function List ({records, actionButtons}) {
 
 
     useEffect(() => {
-        console.log(records)
+        console.log("records", records)
     }, [records])
 
     if (!records.length) {
@@ -38,7 +38,7 @@ function List ({records, actionButton}) {
                                 }
                                 <td>
                                     {
-                                        actionButton ? actionButton(record) : null
+                                        actionButtons ? actionButtons(record) : null
                                     }
                                 </td>
                             </tr>

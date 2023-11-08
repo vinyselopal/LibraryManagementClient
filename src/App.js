@@ -6,6 +6,7 @@ import SearchBooks from "./pages/SearchBooks";
 import Layout from "./pages/Layout";
 import IssueBook from "./pages/IssueBook";
 import SearchMembers from "./pages/SearchMembers";
+import BorrowHistory from "./pages/BorrowHistory";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="add_books" element={<AddBooks />} />
           <Route path="issue_book" element={<IssueBook />} />
           <Route path="search_members" element={<SearchMembers />} />
+          <Route path="borrow_history" element={<BorrowHistory />} />
         </Route>
       </Routes>
     </BrowserRouter>
