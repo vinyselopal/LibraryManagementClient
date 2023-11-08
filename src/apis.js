@@ -42,3 +42,13 @@ export const issueBook = async (fields) => {
   const confirmation = parsedResponse.message;
   return confirmation;
 };
+
+export const getMembers = async (fields) => {
+  const response = await fetch(
+    BASE_URL +
+      `/members?${fields ? `outstanding_debt=${fields.outstanding_debt}` : ""}`
+  );
+  const parsedResponse = await response.json();
+  const members = parsedResponse.message;
+  return members;
+};

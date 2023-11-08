@@ -38,7 +38,7 @@ function List ({records, actionButton}) {
                                 }
                                 <td>
                                     {
-                                        actionButton(record)
+                                        actionButton ? actionButton(record) : null
                                     }
                                 </td>
                             </tr>
