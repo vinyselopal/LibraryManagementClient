@@ -30,3 +30,15 @@ export const addBooks = async (books) => {
   const confirmation = parsedResponse.message;
   return confirmation;
 };
+
+export const issueBook = async (fields) => {
+  console.log(fields);
+  const response = await fetch(BASE_URL + "/members/issue_book", {
+    body: JSON.stringify(fields),
+    method: "POST",
+    "Content-Type": "application/json",
+  });
+  const parsedResponse = await response.json();
+  const confirmation = parsedResponse.message;
+  return confirmation;
+};

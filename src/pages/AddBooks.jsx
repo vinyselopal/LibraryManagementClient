@@ -11,7 +11,7 @@ const AddBooks = () => {
     const [flashMessage, setFlashMessage] = useState("")
     const [flashVisibility, setFlashVisibility] = useState(false)
 
-    const handleSubmit = async (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
         const response = await importBooks(formData)
         setBooks(response)
@@ -53,14 +53,14 @@ const AddBooks = () => {
             }
             <div>
                 <button onClick={handleSubmission}>Add selected records</button>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleFormSubmit}>
                     <label name='author'>Author</label>
                     <input type="text" defaultValue={formData.author} onChange={handleChange} name='author'/>
                     <label name='title'>Title</label>
                     <input type="text" defaultValue={formData.title} onChange={handleChange} name='title'/>
                     <label name='quantity'>Quantity</label>
                     <input type="number" defaultValue={formData.quantity} onChange={handleChange} name='quantity'/>
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Import</button>
                 </form>
             </div>
             <List records={books} actionButton={selectButton}/>
