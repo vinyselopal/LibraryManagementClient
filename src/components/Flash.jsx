@@ -3,7 +3,7 @@ import { useEffect } from "react"
 function Flash ({message}) {
 
     return (
-        <div>{message.toString()}</div>
+        <div className="p-3 bg-yellow-100">{message.toString()}</div>
     )
 }
 

@@ -18,16 +18,24 @@ const SearchBooks = () => {
     }
 
     return (
-        <div>
-            <h1>Search Books</h1>
+        <div className="p-3 w-full">
+            <h1 className="p-3 border-b-2">Search Books</h1>
             <div>
-                <form onSubmit={handleSubmit}>
-                    <label name='author'>Author</label>
-                    <input type="text" defaultValue={formData.author} onChange={handleChange} name='author'/>
-                    <label name='title'>Title</label>
-                    <input type="text" defaultValue={formData.title} onChange={handleChange} name='title'/>
-                    <button type='submit'>Submit</button>
-                </form>
+                <div className="p-3 w-1/4 min-w-min">
+                    <form onSubmit={handleSubmit} className="flex flex-col">
+                        <div className="flex flex-row p-3 justify-between space-x-4">
+                            <label name='author'>Author</label>
+                            <input type="text" name='author' className="border-b-2"  defaultValue={formData.author} onChange={handleChange} id='author'/>
+                        </div>
+                        <div className="flex flex-row p-3 justify-between space-x-4">
+                            <label name='title'>Title</label>
+                            <input type="text" name='title' className="border-b-2"  defaultValue={formData.title} onChange={handleChange} id='title'/>
+                        </div>
+                        <div className="p-3">
+                            <button type='submit' className="bg-blue-500 p-2 rounded-sm text-white">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <List records={books} />
         </div>

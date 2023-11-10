@@ -10,11 +10,10 @@ export const getBooks = async (fields) => {
 };
 
 export const importBooks = async (fields) => {
-  const response = await fetch(BASE_URL + "/books/import_books", {
-    body: JSON.stringify(fields),
-    method: "POST",
-    "Content-Type": "application/json",
-  });
+  const response = await fetch(
+    BASE_URL +
+      `/books/import_books?author=${fields.author}&title=${fields.title}&quantity=${fields.quantity}`
+  );
   const parsedResponse = await response.json();
   const books = parsedResponse.message;
   return books;

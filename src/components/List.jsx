@@ -14,13 +14,13 @@ function List ({records, actionButtons}) {
 
 
     return (
-        <div>
+        <div className="border-t-2 p-3">
             <table>
                 <thead>
-                    <tr>
+                    <tr className="border-b-2">
                         {
                             Object.keys(records[0]).map(key =>
-                                <th>{key}</th>
+                                <th className="p-3">{key}</th>
                                 )
                         }
                     </tr>
@@ -28,10 +28,10 @@ function List ({records, actionButtons}) {
                 <tbody>
                     {
                         records.map(record =>
-                            <tr className={`record_${record.id}`} key={`record_${record.id}`}>
+                            <tr className={`record_${record.id} border-b-2`} key={`record_${record.id}`}>
                                 {
                                     Object.keys(record).map(key =>
-                                        <td>
+                                        <td className="p-3">
                                             {record[key]}
                                         </td>
                                     )

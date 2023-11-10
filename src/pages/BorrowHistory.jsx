@@ -21,7 +21,7 @@ const BorrowHistory = () => {
         setFormData((preFormData) => ({...preFormData, [name]: value}))
     }
 
-    const returnAndPayButtons = (record) => {
+    const ReturnAndPayButtons = (record) => {
         const handleReturn = async (record) => {
             const confirmation = await returnBook(record.id)
             setFlashMessage(confirmation)
@@ -34,37 +34,49 @@ const BorrowHistory = () => {
         }
 
         return (
-            <div>
-                <button onClick={() => handleReturn(record)} className={`record_${record.id}`}>Return</button>
-                <button onClick={() => handlePayment(record)} className={`record_${record.id}`}>Mark paid</button>
+            <div className="space-x-4">
+                <button onClick={() => handleReturn(record)} className={`record_${record.id} bg-blue-500 p-2 rounded-sm text-white`}>Return</button>
+                <button onClick={() => handlePayment(record)} className={`record_${record.id} bg-blue-500 p-2 rounded-sm text-white`}>Mark paid</button>
             </div>
         )
     }
 
     return (
-        <div>
-            <h1>Borrow History</h1>
+        <div className="p-3 w-full">
+            <h1 className="p-3 border-b-2">Borrow History</h1>
             {
                 flashVisibility?
                 <Flash message={flashMessage}/>:
                 null
             }
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <label name='book_author'>Book Author</label>
-                    <input type="text" defaultValue={formData.book_author} onChange={handleChange} name='book_author'/>
-                    <label name='book_title'>Book Title</label>
-                    <input type="text" defaultValue={formData.title} onChange={handleChange} name='book_title'/>
-                    <label name='issue_date'>Issue Date</label>
-                    <input type="date" defaultValue={formData.issue_date} onChange={handleChange} name='issue_date'/>
-                    <label name='issue_date'>Return Date</label>
-                    <input type="date" defaultValue={formData.return_date} onChange={handleChange} name='return_date'/>
-                    <label name='member_email'>Member Email</label>
-                    <input type="text" defaultValue={formData.member_email} onChange={handleChange} name='member_email'/>
-                    <button type='submit'>Submit</button>
+            <div className="p-3 w-1/4 min-w-min">
+                <form onSubmit={handleSubmit} className="flex flex-col">
+                    <div className="flex flex-row p-3 justify-between space-x-4">
+                        <label name='book_author'>Book Author</label>
+                        <input type="text" name='book_author'className="border-b-2" defaultValue={formData.book_author} onChange={handleChange} id='book_author'/>
+                    </div>
+                    <div className="flex flex-row p-3 justify-between space-x-4">
+                        <label name='book_title'>Book Title</label>
+                        <input type="text" name='book_title' className="border-b-2" defaultValue={formData.title} onChange={handleChange} id='book_title'/>
+                    </div>
+                    <div className="flex flex-row p-3 justify-between space-x-4">
+                        <label name='issue_date'>Issue Date</label>
+                        <input type="date" name='issue_date' className="border-b-2" defaultValue={formData.issue_date} onChange={handleChange} id='issue_date'/>
+                    </div>
+                    <div className="flex flex-row p-3 justify-between space-x-4">
+                        <label name='issue_date'>Return Date</label>
+                        <input type="date" name='issue_date' className="border-b-2"  defaultValue={formData.return_date} onChange={handleChange} id='return_date'/>
+                    </div>
+                    <div className="flex flex-row p-3 justify-between space-x-4">
+                        <label name='member_email'>Member Email</label>
+                        <input type="text" name='member_email' className="border-b-2" defaultValue={formData.member_email} onChange={handleChange} id='member_email'/>
+                    </div>
+                    <div className="p-3">
+                        <button type='submit' className="bg-blue-500 p-2 rounded-sm text-white">Submit</button>
+                    </div>
                 </form>
             </div>
-            <List records={transactions} actionButtons={returnAndPayButtons} />
+            <List records={transactions} actionButtons={ReturnAndPayButtons} />
         </div>
     )
 }
